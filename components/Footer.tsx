@@ -18,7 +18,7 @@ const Footer = () => {
           {/* Logo */}
           <div className='flex items-center gap-3'>
             <span className='text-2xl font-extrabold text-gray-900 dark:text-white'>
-              TastyBite
+              FlavourBox
             </span>
           </div>
 
@@ -45,7 +45,7 @@ const Footer = () => {
           <p className='text-sm text-gray-600 dark:text-gray-400'>
             © {new Date().getFullYear()}{' '}
             <span className='font-bold text-gray-800 dark:text-white'>
-              TastyBite
+              FlavourBox
             </span>
             . All rights reserved.
           </p>

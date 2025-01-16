@@ -57,21 +57,10 @@ const SingleRecipe: React.FC = () => {
     );
 
   return (
-    <section className='p-8 bg-gradient-to-br from-primary to-secondary shadow-xl dark:shadow-2xl dark:bg-gray-900 rounded-xl'>
+    <section className='p-8   shadow-xl dark:shadow-2xl rounded-xl'>
       {recipe ? (
         <div className='flex flex-col md:flex-row gap-8'>
           {/* Image Section */}
-          <div className='flex-shrink-0 w-full md:w-1/2 flex justify-center items-center'>
-            <Image
-              className='w-full h-[400px] object-cover rounded-xl shadow-xl border-4 border-gray-200 dark:border-gray-700 transition-transform duration-500 transform hover:scale-105 hover:rotate-3'
-              src={recipe.image}
-              alt={recipe.title}
-              priority
-              width={960}
-              height={540}
-              unoptimized
-            />
-          </div>
 
           {/* Content Section */}
           <div className='flex flex-col md:w-1/2'>
@@ -84,14 +73,20 @@ const SingleRecipe: React.FC = () => {
                   Ingredients:
                 </h3>
                 <ul className='flex flex-wrap gap-4 mt-2'>
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <li
-                      key={index}
-                      className='px-6 py-3 rounded-full text-gray-800 dark:text-gray-200 bg-primary/90 dark:bg-muted-800 font-medium text-lg shadow-md hover:bg-primary/70 dark:hover:bg-muted-600 cursor-pointer transition-all transform hover:scale-110'
-                    >
-                      {ingredient}
-                    </li>
-                  ))}
+                  {recipe.ingredients.map((ingredient, index) => {
+                    // console.log(!ingredient.trim());
+                    if (!ingredient.trim()) {
+                      return null;
+                    }
+                    return (
+                      <li
+                        key={index}
+                        className='px-6 py-3 rounded-full text-white dark:text-gray-200 bg-primary/90 dark:bg-muted-800 font-medium text-lg shadow-md hover:bg-primary/70 dark:hover:bg-muted-600 cursor-pointer transition-all transform hover:scale-110'
+                      >
+                        {ingredient}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div>
@@ -103,6 +98,17 @@ const SingleRecipe: React.FC = () => {
                 </p>
               </div>
             </div>
+          </div>
+          <div className='flex-shrink-0 w-full md:w-1/2 flex justify-center items-center'>
+            <Image
+              className='w-full h-[400px] object-cover rounded-xl shadow-xl border-4 border-gray-200 dark:border-gray-700 transition-transform duration-500 transform hover:scale-105 '
+              src={recipe.image}
+              alt={recipe.title}
+              priority
+              width={960}
+              height={540}
+              unoptimized
+            />
           </div>
         </div>
       ) : (
