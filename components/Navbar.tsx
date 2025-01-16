@@ -9,8 +9,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { Menu } from 'lucide-react';
+import { Menu, UserRound } from 'lucide-react';
 
 const data = [
   { id: 4, link: '/', title: 'Home' },
@@ -63,9 +62,9 @@ const Navbar = () => {
           <div className='flex-shrink-0 flex items-center'>
             <Link
               href='/'
-              className='text-2xl font-extrabold  hover:text-secondary transition-all duration-300'
+              className='text-2xl font-extrabold  hover:text-primary transition-all duration-300'
             >
-              Culinary Bliss
+              FlavorBox
             </Link>
           </div>
 
@@ -75,7 +74,7 @@ const Navbar = () => {
               <Link
                 href={item.link}
                 key={item.id}
-                className='hover:text-secondary hover:underline hover:scale-105 transition-transform duration-300'
+                className='hover:text-primary hover:underline hover:scale-105 transition-transform duration-300'
               >
                 {item.title}
               </Link>
@@ -87,14 +86,14 @@ const Navbar = () => {
             {user?.email === 'admin@gmail.com' && (
               <Link
                 href={'/admin'}
-                className='hover:text-secondary  transition-all'
+                className='hover:text-primary  transition-all'
               >
                 Dashboard
               </Link>
             )}
             {!user ? (
               <div>
-                <Link href={'/login'} className='hover:text-secondary'>
+                <Link href={'/login'} className='hover:text-primary'>
                   Login
                 </Link>
               </div>
@@ -102,24 +101,17 @@ const Navbar = () => {
               <div className='relative'>
                 <button
                   onClick={() => setDropdownOpen(!isDropdownOpen)}
-                  className='flex items-center gap-2 w-9 h-9 rounded-full border-2 border-bisque hover:border-secondary transition-all'
+                  className='flex items-center gap-2 w-9 h-9 rounded-full border-2 border-bisque hover:border-secondary transition-all   justify-center'
                 >
-                  <Avatar>
-                    <AvatarImage
-                      className='rounded-full'
-                      src='https://github.com/shadcn.png'
-                      alt='@shadcn'
-                    />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
+                  <UserRound />
                 </button>
 
                 {/* Dropdown */}
                 {isDropdownOpen && (
-                  <div className='absolute right-0 mt-2 w-48   border border-bisque rounded-lg shadow-lg p-2'>
+                  <div className='absolute right-0 mt-2 w-48   border border-bisque rounded-lg shadow-lg '>
                     <button
                       onClick={handleLogout}
-                      className='w-full text-left px-4 py-2 hover:bg-secondary hover: transition-all rounded-lg'
+                      className='bg-gray-300 w-full text-left px-4 py-2 hover:bg-primary hover:text-white transition-all rounded-lg'
                     >
                       Logout
                     </button>
@@ -137,7 +129,7 @@ const Navbar = () => {
                 <SheetHeader>
                   <SheetTitle>
                     <Link className=' font-extrabold' href={'/'}>
-                      Culinary Bliss
+                      FlavorBox
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
@@ -146,7 +138,7 @@ const Navbar = () => {
                     <Link
                       href={item.link}
                       key={item.id}
-                      className='hover:text-secondary border-b-2 py-4 transition-all duration-300'
+                      className='hover:text-primary border-b-2 py-4 transition-all duration-300'
                     >
                       {item.title}
                     </Link>

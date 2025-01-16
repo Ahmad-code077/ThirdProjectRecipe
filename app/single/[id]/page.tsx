@@ -69,6 +69,7 @@ const SingleRecipe: React.FC = () => {
               priority
               width={960}
               height={540}
+              unoptimized
             />
           </div>
 

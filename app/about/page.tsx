@@ -1,119 +1,138 @@
 'use client';
 
-import React from 'react';
-import { CheckCircle, Heart, Coffee } from 'lucide-react'; // Import icons from lucide-react
+import { Users, Award, Smile, Heart, Globe, Star } from 'lucide-react';
 
-const About: React.FC = () => {
-  // Data for the cards
-  const cards = [
-    {
-      id: 1,
-      icon: <CheckCircle size={48} className='text-secondary' />,
-      title: 'Diverse Recipes',
-      description:
-        'Explore a wide variety of recipes from global cuisines, tailored to your taste and dietary needs.',
-    },
-    {
-      id: 2,
-      icon: <Heart size={48} className='text-secondary' />,
-      title: 'Healthy Choices',
-      description:
-        'Find recipes that are not only delicious but also nutritious, helping you maintain a healthy lifestyle.',
-    },
-    {
-      id: 3,
-      icon: <Coffee size={48} className='text-secondary' />,
-      title: 'Easy Cooking',
-      description:
-        'Our step-by-step instructions and video guides make cooking simple, fun, and accessible for everyone.',
-    },
-  ];
+const aboutDetails = [
+  {
+    icon: <Users className='text-4xl text-primary' />,
+    title: 'Our Team',
+    description:
+      'Our team consists of passionate chefs, food enthusiasts, and creative minds dedicated to delivering exceptional recipes and experiences.',
+  },
+  {
+    icon: <Award className='text-4xl text-primary' />,
+    title: 'Our Mission',
+    description:
+      'To bring a variety of flavors from around the world to your kitchen while making cooking easy and enjoyable for everyone.',
+  },
+  {
+    icon: <Smile className='text-4xl text-primary' />,
+    title: 'Our Promise',
+    description:
+      'We promise to provide fresh, inspiring, and delicious recipes that will bring joy to your meals and family gatherings.',
+  },
+];
 
+const values = [
+  {
+    icon: <Heart className='text-4xl text-secondary' />,
+    title: 'Passion for Flavor',
+    description:
+      'We love exploring unique tastes and bringing them to life in ways that excite your taste buds.',
+  },
+  {
+    icon: <Globe className='text-4xl text-secondary' />,
+    title: 'Global Inspiration',
+    description:
+      'From traditional cuisines to modern fusion, we draw inspiration from all over the world.',
+  },
+  {
+    icon: <Star className='text-4xl text-secondary' />,
+    title: 'Excellence Guaranteed',
+    description:
+      'Our recipes are carefully curated to ensure the highest quality and satisfaction.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Emily Roberts',
+    feedback:
+      'Flavour Box has completely transformed my cooking experience. The recipes are easy to follow and incredibly delicious!',
+  },
+  {
+    name: 'James Carter',
+    feedback:
+      'I love how Flavour Box offers a wide variety of recipes. There’s always something new and exciting to try.',
+  },
+];
+
+const AboutPage = () => {
   return (
-    <div className='p-6 max-w-5xl mx-auto'>
-      {/* Text Section */}
-      <div>
-        <h1 className='text-5xl font-extrabold text-center text-gray-900 dark:text-white mb-8'>
-          About <span className='text-secondary'>TastyBite</span>
+    <section className='min-h-screen py-16 '>
+      <div className='container mx-auto px-6 lg:px-20 text-center'>
+        {/* Heading Section */}
+        <h1 className='text-4xl lg:text-5xl font-extrabold mb-6'>
+          About{' '}
+          <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>
+            Flavour Box
+          </span>
         </h1>
-        <p className='text-xl text-gray-700 dark:text-gray-300 mb-10 leading-relaxed'>
-          Welcome to <strong>TastyBite</strong>, your ultimate platform for
-          exploring and discovering a wide variety of delicious recipes. Whether
-          you are a culinary expert or just beginning your cooking journey, we
-          offer something for everyone.
-        </p>
-
-        <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-6'>
-          Our Vision
-        </h2>
-        <p className='text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed'>
-          At TastyBite, we envision a world where everyone can enjoy cooking and
-          eating healthy, tasty meals. We aim to inspire people to experiment
-          with different cuisines, cooking styles, and new ingredients. Our
-          platform is designed to empower both beginners and experienced cooks
-          to discover exciting recipes and bring them to life in their kitchens.
-        </p>
-
-        <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-6'>
-          Why Choose Us?
-        </h2>
-        <ul className='list-inside list-disc text-lg text-gray-700 dark:text-gray-300 mb-10'>
-          <li className='mb-4'>
-            Access a curated selection of diverse and global recipes, tailored
-            to your tastes.
-          </li>
-          <li className='mb-4'>
-            Personalized recommendations based on your dietary preferences and
-            restrictions.
-          </li>
-          <li className='mb-4'>
-            Step-by-step cooking instructions with helpful images and videos to
-            guide you.
-          </li>
-          <li className='mb-4'>
-            Easily save and share your favorite recipes with family and friends.
-          </li>
-          <li className='mb-4'>
-            Our website is fully responsive, ensuring a smooth experience across
-            all devices.
-          </li>
-        </ul>
-
-        <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-6'>
-          Join Us on Our Culinary Journey
-        </h2>
-        <p className='text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed'>
-          We’re passionate about food and bringing people together through
-          cooking. Whether you&apos;re looking for quick weeknight dinners or
-          seeking inspiration for a special occasion, TastyBite is your perfect
-          companion in the kitchen. Join our growing community and start
-          exploring the endless culinary possibilities today!
+        <p className='text-lg lg:text-xl mb-12 max-w-3xl mx-auto'>
+          At Flavour Box, we are committed to bringing the joy of cooking and
+          exploration into every home. From traditional recipes to modern
+          favorites, we aim to inspire creativity and delight.
         </p>
 
         {/* Cards Section */}
-        <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-6 text-center'>
-          Why TastyBite?
-        </h2>
-        <div className='grid md:grid-cols-3 gap-8'>
-          {cards.map((card) => (
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {aboutDetails.map((detail, index) => (
             <div
-              key={card.id}
-              className='bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center'
+              key={index}
+              className='bg-white border border-primary rounded-xl shadow-lg p-8 hover:shadow-2xl transform hover:scale-105 transition-all duration-300'
             >
-              {/* Centering the icon */}
-              <div className='mb-4'>{card.icon}</div>
-              <h3 className='text-2xl font-semibold text-gray-900 dark:text-white mb-4 text-center'>
-                {card.title}
+              <div className='flex justify-center items-center mb-6'>
+                {detail.icon}
+              </div>
+              <h3 className='text-xl font-semibold text-primary mb-4'>
+                {detail.title}
               </h3>
-              <p className='text-lg text-gray-700 dark:text-gray-300 text-center'>
-                {card.description}
-              </p>
+              <p className='text-gray-600'>{detail.description}</p>
             </div>
           ))}
         </div>
+
+        {/* Values Section */}
+        <div className='mt-16'>
+          <h2 className='text-3xl font-extrabold mb-6'>Our Values</h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {values.map((value, index) => (
+              <div
+                key={index}
+                className='  rounded-xl shadow-lg p-8 hover:shadow-2xl transform hover:scale-105 transition-all duration-300'
+              >
+                <div className='flex justify-center items-center mb-6'>
+                  {value.icon}
+                </div>
+                <h3 className='text-xl font-semibold mb-4'>{value.title}</h3>
+                <p>{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className='mt-16'>
+          <h2 className='text-3xl font-extrabold mb-6'>What Our Users Say</h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className='bg-white border border-primary rounded-xl shadow-lg p-8 text-left hover:shadow-2xl transform hover:scale-105 transition-all duration-300'
+              >
+                <p className='text-gray-700 mb-4'>
+                  &quot;{testimonial.feedback}&quot;
+                </p>
+                <h4 className='font-semibold text-primary'>
+                  - {testimonial.name}
+                </h4>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default About;
+export default AboutPage;

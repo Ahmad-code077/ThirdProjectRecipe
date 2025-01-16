@@ -20,20 +20,20 @@ const Contact: React.FC = () => {
   const contactDetails = [
     {
       id: 1,
-      icon: <Phone size={48} className='text-secondary' />,
-      title: 'Call Us',
+      icon: <Phone size={32} className='text-primary' />,
+      title: 'Phone',
       description: '+92-347384387',
     },
     {
       id: 2,
-      icon: <Mail size={48} className='text-secondary' />,
-      title: 'Email Us',
-      description: 'tastybite@gmail.com',
+      icon: <Mail size={32} className='text-primary' />,
+      title: 'Email',
+      description: 'flavourbox@gmail.com',
     },
     {
       id: 3,
-      icon: <MapPin size={48} className='text-secondary' />,
-      title: 'Visit Us',
+      icon: <MapPin size={32} className='text-primary' />,
+      title: 'Location',
       description: 'Bahawalpur, Pakistan',
     },
   ];
@@ -42,36 +42,31 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check if all fields are filled
     if (formData.name && formData.email && formData.message) {
       setIsSubmitting(true);
 
-      // Simulate form submission (e.g., sending the data to a backend)
       console.log('Form data submitted:', formData);
 
-      // Clear form after successful submission
       setFormData({
         name: '',
         email: '',
         message: '',
       });
 
-      // Show success toast message
       showToast({
-        title: 'Success!',
-        description: 'Your message has been submitted successfully.',
+        title: 'Message Sent!',
+        description:
+          'We have received your message and will get back to you soon.',
         variant: 'default',
       });
 
       setIsSubmitting(false);
     } else {
-      // Show error toast if fields are missing
       showToast({
-        title: 'Error',
-        description: 'Please fill all the fields before submitting.',
+        title: 'Missing Information',
+        description: 'Please fill in all the fields before submitting.',
         variant: 'destructive',
       });
-      console.log('error');
     }
   };
 
@@ -87,101 +82,107 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className='p-6 max-w-5xl mx-auto'>
-      {/* Header Section */}
-      <div className='text-center mb-10'>
+    <div className='py-16 px-6 lg:px-20 bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800'>
+      {/* Page Header */}
+      <div className='text-center mb-12'>
         <h1 className='text-5xl font-extrabold text-gray-900 dark:text-white'>
-          Contact <span className='text-secondary'>TastyBite</span>
+          Let’s Connect with{' '}
+          <span className='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>
+            Flavour Box
+          </span>
         </h1>
-        <p className='text-lg text-gray-700  dark:text-gray-300 mt-4'>
-          We’d love to hear from you! Whether you have questions, feedback, or
-          just want to say hello, feel free to reach out to us.
+        <p className='text-lg mt-4 text-gray-600 dark:text-gray-300'>
+          Have a question or want to collaborate? Drop us a message, and
+          we&apos;ll get back to you shortly.
         </p>
       </div>
 
-      {/* Contact Cards Section */}
-      <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-8 text-center'>
-        Get in Touch
-      </h2>
-      <div className='grid md:grid-cols-3 gap-8'>
-        {contactDetails.map((detail) => (
-          <div
-            key={detail.id}
-            className='bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center justify-center gap-2 border border-secondary'
-          >
-            <div className='mb-4'>{detail.icon}</div>
-            <h3 className='text-2xl font-semibold text-gray-900 dark:text-white mb-4'>
-              {detail.title}
-            </h3>
-            <p className='text-lg text-gray-700 dark:text-gray-300'>
-              {detail.description}
-            </p>
-          </div>
-        ))}
-      </div>
+      {/* Contact Info Section */}
+      <div className='flex flex-col lg:flex-row gap-12 items-center'>
+        <div className='w-full lg:w-1/2 grid grid-cols-1 gap-8'>
+          {contactDetails.map((detail) => (
+            <div
+              key={detail.id}
+              className='flex items-center gap-4 bg-white dark:bg-gray-800 border border-primary rounded-lg shadow-md p-6 hover:shadow-lg transition-all'
+            >
+              <div className='p-4 bg-primary/10 rounded-full'>
+                {detail.icon}
+              </div>
+              <div>
+                <h3 className='text-xl font-semibold text-gray-900 dark:text-white'>
+                  {detail.title}
+                </h3>
+                <p className='text-gray-600 dark:text-gray-300'>
+                  {detail.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {/* Contact Form Section */}
-      <div className='mt-12 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg'>
-        <h2 className='text-4xl font-semibold text-gray-900 dark:text-white mb-6 text-center'>
-          Send Us a Message
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className='mb-6'>
-            <label
-              className='block text-lg text-gray-700 dark:text-gray-300 mb-2'
-              htmlFor='name'
+        {/* Contact Form */}
+        <div className='w-full lg:w-1/2 bg-white dark:bg-gray-800 border border-secondary rounded-lg shadow-lg p-8'>
+          <h2 className='text-3xl font-bold text-gray-900 dark:text-white mb-6'>
+            Send a Message
+          </h2>
+          <form onSubmit={handleSubmit} className='space-y-6'>
+            <div>
+              <label
+                htmlFor='name'
+                className='block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2'
+              >
+                Your Name
+              </label>
+              <input
+                type='text'
+                id='name'
+                name='name'
+                value={formData.name}
+                onChange={handleInputChange}
+                className='w-full px-4 py-3 border rounded-lg text-gray-900 dark:text-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary'
+              />
+            </div>
+            <div>
+              <label
+                htmlFor='email'
+                className='block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2'
+              >
+                Your Email
+              </label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleInputChange}
+                className='w-full px-4 py-3 border rounded-lg text-gray-900 dark:text-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary'
+              />
+            </div>
+            <div>
+              <label
+                htmlFor='message'
+                className='block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2'
+              >
+                Your Message
+              </label>
+              <textarea
+                id='message'
+                name='message'
+                rows={5}
+                value={formData.message}
+                onChange={handleInputChange}
+                className='w-full px-4 py-3 border rounded-lg text-gray-900 dark:text-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary'
+              ></textarea>
+            </div>
+            <button
+              type='submit'
+              disabled={isSubmitting}
+              className='w-full py-3 bg-primary text-white text-lg font-semibold rounded-lg hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-secondary'
             >
-              Your Name
-            </label>
-            <input
-              type='text'
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleInputChange}
-              className='w-full p-4 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-secbg-secondary'
-            />
-          </div>
-          <div className='mb-6'>
-            <label
-              className='block text-lg text-gray-700 dark:text-gray-300 mb-2'
-              htmlFor='email'
-            >
-              Your Email
-            </label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleInputChange}
-              className='w-full p-4 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-secbg-secondary'
-            />
-          </div>
-          <div className='mb-6'>
-            <label
-              className='block text-lg text-gray-700 dark:text-gray-300 mb-2'
-              htmlFor='message'
-            >
-              Your Message
-            </label>
-            <textarea
-              id='message'
-              name='message'
-              rows={6}
-              value={formData.message}
-              onChange={handleInputChange}
-              className='w-full p-4 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-secbg-secondary'
-            ></textarea>
-          </div>
-          <button
-            type='submit'
-            className='w-full py-3 px-4 bg-secondary text-white text-lg rounded-lg hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secbg-secondary'
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
+              {isSubmitting ? 'Sending...' : 'Submit'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

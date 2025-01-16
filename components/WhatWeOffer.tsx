@@ -43,10 +43,10 @@ const WhatWeOffer = () => {
               <div className='flex justify-center items-center mb-6'>
                 {offer.icon}
               </div>
-              <h3 className='text-2xl font-semibold mb-4 text-gray-800'>
+              <h3 className='text-2xl font-semibold mb-4 text-primary'>
                 {offer.title}
               </h3>
-              <p className='text-md text-gray-700'>{offer.description}</p>
+              <p className='text-md text-secondary'>{offer.description}</p>
             </div>
           ))}
         </div>

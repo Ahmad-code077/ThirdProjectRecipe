@@ -28,8 +28,8 @@ const getToastStyles = (variant: 'default' | 'destructive' | undefined) => {
     'p-4 rounded-lg text-sm font-medium shadow-md border transition-all duration-300';
 
   if (variant === 'destructive') {
-    return `${baseStyles} bg-[#7F1D1D] text-primary border-[#7F1D1D] `;
+    return `${baseStyles} bg-[#FEE2E2] text-[#7F1D1D] border-[#7F1D1D]`;
   }
 
-  return `${baseStyles} bg-gray-300 text-black border-gray-300 `;
+  return `${baseStyles} bg-[#E5E7EB] text-[#1F2937] border-[#D1D5DB]`;
 };

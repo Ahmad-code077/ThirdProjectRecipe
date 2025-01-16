@@ -21,48 +21,55 @@ const RecipeList = ({ recipes, refreshRecipes }: RecipeListProps) => {
 
   return (
     <div className='py-6'>
-      <h2 className='text-2xl font-bold text-black mb-6'>All Recipes</h2>
+      <h2 className='text-2xl font-bold  mb-6'>All Recipes</h2>
       {recipes.length > 0 ? (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 '>
-          {recipes.map((recipe) => (
-            <div
-              key={recipe.id}
-              className='bg-white shadow-md rounded-lg overflow-hidden border-2 border-secondary hover:shadow-lg transition-shadow w-full'
-            >
-              <div className='relative w-full h-48'>
-                <Image
-                  src={recipe.image}
-                  alt={recipe.title}
-                  layout='fill'
-                  objectFit='cover'
-                  className='rounded-t-lg'
-                />
-              </div>
-              <div className='p-4'>
-                <h3 className='text-xl font-semibold text-secondary'>
-                  {recipe.title}
-                </h3>
-                <p className='text-sm text-gray-600 mt-2'>
-                  <strong>Ingredients:</strong> {recipe.ingredients}
-                </p>
-                <p className='text-sm text-gray-600 mt-2'>
-                  <strong>Instructions:</strong> {recipe.instructions}
-                </p>
-                <div className='mt-4 flex space-x-2'>
-                  <button
-                    onClick={() => setSelectedRecipe(recipe)}
-                    className='px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary-dark focus:ring-offset-2 transition-all'
-                  >
-                    Update
-                  </button>
-                  <DeleteRecipeButton
-                    recipeId={recipe.id}
-                    refreshRecipes={refreshRecipes}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className='overflow-x-auto'>
+          <table className='min-w-full table-auto'>
+            <thead>
+              <tr className='bg-secondary text-white'>
+                <th className='px-4 py-2 text-left text-foreground'>Image</th>
+                <th className='px-4 py-2 text-left text-foreground'>Title</th>
+                <th className='px-4 py-2 text-left text-foreground'>
+                  Ingredients
+                </th>
+                <th className='px-4 py-2 text-left text-foreground'>
+                  Instructions
+                </th>
+                <th className='px-4 py-2 text-left text-foreground'>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipes.map((recipe) => (
+                <tr key={recipe.id} className='border-b border-border'>
+                  <td className='px-4 py-2'>
+                    <Image
+                      src={recipe.image}
+                      alt={recipe.title}
+                      width={50}
+                      height={50}
+                      className='rounded-full'
+                      unoptimized
+                    />
+                  </td>
+                  <td className='px-4 py-2'>{recipe.title}</td>
+                  <td className='px-4 py-2'>{recipe.ingredients}</td>
+                  <td className='px-4 py-2'>{recipe.instructions}</td>
+                  <td className='px-4 py-2 flex gap-2'>
+                    <button
+                      onClick={() => setSelectedRecipe(recipe)}
+                      className='px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary-dark focus:ring-offset-2 transition-all'
+                    >
+                      Update
+                    </button>
+                    <DeleteRecipeButton
+                      recipeId={recipe.id}
+                      refreshRecipes={refreshRecipes}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <p className='text-gray-600 text-center'>No recipes available.</p>
